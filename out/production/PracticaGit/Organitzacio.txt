@@ -1,7 +1,0 @@
-compruebaNombre(Andreu)
-
-compruebaEmail(Marc)
-
-compruebaPassword(Andreu)
-
-generaCodigoSeguridad(Marc)
