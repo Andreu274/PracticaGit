@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class registroUsuario {
+public class RegistroUsuario {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
