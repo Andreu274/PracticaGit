@@ -1,40 +1,42 @@
 package registro;
+
 public class ValidarCampos {
-    public boolean validarCampos(String[] usuarios, String nombreUsuario, String emailUsuario, String passwordUsuario, String codigoUsuario) {
-        boolean compruebaNombre = compruebaNombre(usuarios, nombreUsuario);
+    public boolean validarCampos(String nombreUsuario, String emailUsuario, String passwordUsuario, String codigoUsuario) {
+        boolean compruebaNombre = compruebaNombre(nombreUsuario);
         boolean compruebaEmail = compruebaEmail(emailUsuario);
         boolean compruebaPassword = compruebaPassword(passwordUsuario);
         boolean compruebaCodigo = compruebaCodigo(codigoUsuario);
     
         return compruebaNombre && compruebaEmail && compruebaPassword && compruebaCodigo;
     }
-    
-    public static boolean compruebaNombre(String[] usuarios, String nombreUsuario) {
+
+    public static boolean compruebaNombre(String nombreUsuario) {
         if(nombreUsuario.isEmpty()) {
             System.out.println("El nombre de usuario no puede estar vacío.");
             return false;
         }
-    
+
         if(nombreUsuario.length() > 16) {
             System.out.println("El nombre de usuario no puede tener más de 16 caracteres.");
             return false;
         }
-    
+
         if(!nombreUsuario.matches("[A-Z][a-z]+[_-]\\d{3}")) {
             System.out.println("El nombre de usuario debe cumplir el formato: una mayúscula seguida de minúsculas, un guión medio o bajo y tres dígitos.");
             return false;
         }
-    
-        for(int i = 0; i < usuarios.length; i++) {
-            if(usuarios[i].equalsIgnoreCase(nombreUsuario)) {
+
+        String[] nombresExistentes = {"Carles_345", "Pablo-234", "Luisa_987", "Marcos_123", "Maria_456", "Ana-678", "Juan_098", "Pedro-564", "Lucia-237", "Sara_765"};
+
+        for(int i = 0; i < nombresExistentes.length; i++) {
+            if(nombresExistentes[i].equalsIgnoreCase(nombreUsuario)) {
                 System.out.println("El nombre de usuario ya existe en la base de datos.");
                 return false;
             }
         }
-    
+
         return true;
     }
-    
 
     public static boolean compruebaPassword(String passwordUsuario) {
         if(passwordUsuario.isEmpty()) {
