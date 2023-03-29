@@ -1,4 +1,7 @@
 import org.junit.Test;
+
+import registro.ValidarCampos;
+
 import static org.junit.Assert.*;
 
 public class ValidarCamposTest {

@@ -1,27 +1,35 @@
 import java.util.Scanner;
+import registro.ValidarCampos;
 
 public class RegistroUsuario {
+    private ValidarCampos validador;
 
-    public static void main(String[] args) {
+    public RegistroUsuario() {
+        this.validador = new ValidarCampos();
+    }
 
+    public void registrarUsuario() {
         Scanner sc = new Scanner(System.in);
-        ValidarCampos validador = new ValidarCampos();
 
         System.out.print("Ingrese su nombre: ");
-        String nombre = sc.nextLine();
+        String nombreUsuario = sc.nextLine();
         System.out.print("Ingrese su email: ");
-        String email = sc.nextLine();
+        String emailUsuario = sc.nextLine();
         System.out.print("Ingrese su password: ");
-        String password = sc.nextLine();
+        String passwordUsuario = sc.nextLine();
         System.out.print("Ingrese su código: ");
-        String codigo = sc.nextLine();
+        String codigoUsuario = sc.nextLine();
 
-        boolean camposCorrectos = validador.validarCampos(nombre, email, password, codigo);
+        boolean camposCorrectos = validador.validarCampos(nombreUsuario, emailUsuario, passwordUsuario, codigoUsuario);
         if (camposCorrectos) {
             System.out.println("Campos correctos");
+        } else {
+            System.out.println("Campos incorrectos");
         }
-        else {
-            System.out.println("Camp/s incorrecte/s");
-        }
+    }
+
+    public static void main(String[] args) {
+        RegistroUsuario registro = new RegistroUsuario();
+        registro.registrarUsuario();
     }
 }

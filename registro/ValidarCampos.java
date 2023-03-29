@@ -1,9 +1,12 @@
+package registro;
 public class ValidarCampos {
-    public boolean validarCampos(String nombreUsuario, String email, String password, String codigo) {
+    public boolean validarCampos(String nombreUsuario, String emailUsuario, String passwordUsuario, String codigoUsuario) {
         boolean comprubaNombre =  compruebaNombre(nombreUsuario);
-        boolean compruebaPassword = compruebaPassword(password);
+        boolean comprubaEmail = compruebaEmail(emailUsuario);
+        boolean comprubaPassword = compruebaPassword(passwordUsuario);
+        boolean comprubaCodigo = compruebaCodigo(codigoUsuario);
 
-        return comprubaNombre && compruebaPassword ;
+        return comprubaNombre && comprubaEmail && comprubaPassword && comprubaCodigo;
     }
 
     public static boolean compruebaNombre(String nombreUsuario) {
@@ -34,31 +37,31 @@ public class ValidarCampos {
         return true;
     }
 
-    public static boolean compruebaPassword(String password) {
-        if(password.isEmpty()) {
+    public static boolean compruebaPassword(String passwordUsuario) {
+        if(passwordUsuario.isEmpty()) {
             System.out.println("La contraseña no puede estar vacía.");
             return false;
         }
 
-        if(password.length() <= 8) {
+        if(passwordUsuario.length() <= 8) {
             System.out.println("La contraseña debe tener 8 caracteres.");
             return false;
         }
 
-        if(!password.matches("[A-Z][a-zA-Z0-9]*[@\\-_#][0-9]{2}")) {
+        if(!passwordUsuario.matches("[A-Z][a-zA-Z0-9]*[@\\-_#][0-9]{2}")) {
             System.out.println("La contraseña debe cumplir el formato: una mayúscula seguida de letras, números y un carácter especial (@,-,# o _) seguido de dos dígitos.");
             return false;
         }
         return true;
     }
 
-    public boolean compruebaEmail(String email) {
-        if(email.isEmpty()) {
+    public boolean compruebaEmail(String emailUsuario) {
+        if(emailUsuario.isEmpty()) {
             System.out.println("El email no puede estar vacío.");
             return false;
         }
 
-        if(!email.matches("[\\w]+@(paucasesnovescifp|yahoo|gmail|hotmail)\\.(com|es|cat)")) {
+        if(!emailUsuario.matches("[\\w]+@(paucasesnovescifp|yahoo|gmail|hotmail)\\.(com|es|cat)")) {
             System.out.println("El email ingresado no es válido.");
             return false;
         }
@@ -66,13 +69,13 @@ public class ValidarCampos {
         return true;
     }
 
-    public boolean compruebaCodigo(String codigo) {
-        if(codigo.isEmpty()) {
+    public boolean compruebaCodigo(String codigoUsuario) {
+        if(codigoUsuario.isEmpty()) {
             System.out.println("El código no puede estar vacío.");
             return false;
         }
 
-        if(!codigo.matches("[a-zA-Z0-9!@#$%^&*()_+={}|;':,./<>?]{8}")) {
+        if(!codigoUsuario.matches("[a-zA-Z0-9!@#$%^&*()_+={}|;':,./<>?]{8}")) {
             System.out.println("El codigo no es válido.");
             return false;
         }
