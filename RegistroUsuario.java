@@ -21,7 +21,7 @@ public class RegistroUsuario {
             System.out.println("Campos correctos");
         }
         else {
-            System.out.println("Algun campo es incorrecto");
+            System.out.println("Camp/s incorrecte/s");
         }
     }
 }
