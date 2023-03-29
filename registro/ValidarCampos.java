@@ -1,7 +1,20 @@
 package registro;
 
 public class ValidarCampos {
-    public boolean validarCampos(String nombreUsuario, String emailUsuario, String passwordUsuario, String codigoUsuario) {
+    private String nombreUsuario;
+    private String emailUsuario;
+    private String passwordUsuario;
+    private String codigoUsuario;
+
+    public ValidarCampos(String nombreUsuario, String emailUsuario, String passwordUsuario, String codigoUsuario) {
+        this.nombreUsuario = nombreUsuario;
+        this.emailUsuario = emailUsuario;
+        this.passwordUsuario = passwordUsuario;
+        this.codigoUsuario = codigoUsuario;
+    }
+
+
+    public boolean validarCampos() {
         boolean compruebaNombre = compruebaNombre(nombreUsuario);
         boolean compruebaEmail = compruebaEmail(emailUsuario);
         boolean compruebaPassword = compruebaPassword(passwordUsuario);
@@ -83,6 +96,4 @@ public class ValidarCampos {
 
         return true;
     }
-    
-
 }

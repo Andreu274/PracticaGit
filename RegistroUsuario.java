@@ -5,7 +5,7 @@ public class RegistroUsuario {
     private ValidarCampos validador;
 
     public RegistroUsuario() {
-        this.validador = new ValidarCampos();
+        this.validador = new ValidarCampos("", "", "", "");
     }
 
     public void registrarUsuario() {
@@ -17,10 +17,12 @@ public class RegistroUsuario {
         String emailUsuario = sc.nextLine();
         System.out.print("Ingrese su password: ");
         String passwordUsuario = sc.nextLine();
-        System.out.print("Ingrese su código: ");
+        System.out.print("Ingrese su cÃ³digo: ");
         String codigoUsuario = sc.nextLine();
 
-        boolean camposCorrectos = validador.validarCampos(nombreUsuario, emailUsuario, passwordUsuario, codigoUsuario);
+        this.validador = new ValidarCampos(nombreUsuario, emailUsuario, passwordUsuario, codigoUsuario);
+
+        boolean camposCorrectos = validador.validarCampos();
         if (camposCorrectos) {
             System.out.println("Campos correctos");
         } else {
