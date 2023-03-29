@@ -47,11 +47,9 @@ public class ValidarCampos {
 
         if(!password.matches("[A-Z][a-zA-Z0-9]*[@\\-_#][0-9]{2}")) {
             System.out.println("La contraseña debe cumplir el formato: una mayúscula seguida de letras, números y un carácter especial (@,-,# o _) seguido de dos dígitos.");
-    public boolean validarCampos(String nombre, String email, String password, String codigo) {
-        boolean compruebaEmail = compruebaEmail(email);
-        boolean compruebaCodigo = compruebaCodigo(codigo);
-
-        return compruebaEmail && compruebaCodigo;
+            return false;
+        }
+        return true;
     }
 
     public boolean compruebaEmail(String email) {
@@ -81,5 +79,6 @@ public class ValidarCampos {
 
         return true;
     }
+    
 
 }
