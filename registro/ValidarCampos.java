@@ -1,11 +1,14 @@
 package registro;
 
+// Definició de la classe ValidarCampos
 public class ValidarCampos {
+    // Variables privades d'instància
     private String nombreUsuario;
     private String emailUsuario;
     private String passwordUsuario;
     private String codigoUsuario;
 
+    // Constructor que inicialitza les variables privades amb els valors passats com a paràmetres
     public ValidarCampos(String nombreUsuario, String emailUsuario, String passwordUsuario, String codigoUsuario) {
         this.nombreUsuario = nombreUsuario;
         this.emailUsuario = emailUsuario;
@@ -13,29 +16,34 @@ public class ValidarCampos {
         this.codigoUsuario = codigoUsuario;
     }
 
-
-    public boolean validarcamps() {
+    // Mètode públic que valida tots els camps del formulari i retorna true si tots són vàlids
+    public boolean validarCampos() {
+        // Comprova si el nom d'usuari és vàlid
         boolean compruebaNombre = compruebaNombre(nombreUsuario);
+        // Comprova si l'email és vàlid
         boolean compruebaEmail = compruebaEmail(emailUsuario);
+        // Comprova si la contrasenya és vàlida
         boolean compruebaPassword = compruebaPassword(passwordUsuario);
+        // Comprova si el codi és vàlid
         boolean compruebaCodigo = compruebaCodigo(codigoUsuario);
-    
+
         return compruebaNombre && compruebaEmail && compruebaPassword && compruebaCodigo;
     }
 
+    // Mètode estàtic que comprova si el nom d'usuari és vàlid
     public static boolean compruebaNombre(String nombreUsuario) {
         if(nombreUsuario.isEmpty()) {
-            System.out.println("El nombre de usuario no puede estar buit.");
+            System.out.println("El nom d'usuari no pot estar buit.");
             return false;
         }
 
         if(nombreUsuario.length() > 16) {
-            System.out.println("El nombre de usuario no puede tener más de 16 caracteres.");
+            System.out.println("El nom d'usuari no pot tenir més de 16 caràcters.");
             return false;
         }
 
         if(!nombreUsuario.matches("[A-Z][a-z]+[_-]\\d{3}")) {
-            System.out.println("El nombre de usuario debe cumplir el formato: una mayúscula seguida de minúsculas, un guión medio o bajo y tres dígitos.");
+            System.out.println("El nom d'usuari ha de complir el format: una majúscula seguida de minúscules, un guió mig o baix i tres dígits.");
             return false;
         }
 
@@ -43,7 +51,7 @@ public class ValidarCampos {
 
         for(int i = 0; i < nombresExistentes.length; i++) {
             if(nombresExistentes[i].equalsIgnoreCase(nombreUsuario)) {
-                System.out.println("El nombre de usuario ya existe en la base de datos.");
+                System.out.println("El nom d'usuari ja existeix a la base de dades.");
                 return false;
             }
         }
@@ -51,14 +59,15 @@ public class ValidarCampos {
         return true;
     }
 
+    // Mètode estàtic que comprova si la contrasenya és vàlida
     public static boolean compruebaPassword(String passwordUsuario) {
         if(passwordUsuario.isEmpty()) {
-            System.out.println("La contraseña no puede estar vacía.");
+            System.out.println("La contrasenya no pot estar buida.");
             return false;
         }
 
         if(passwordUsuario.length() <= 8) {
-            System.out.println("La contraseña debe tener 8 caracteres.");
+            System.out.println("La contrasenya ha de tenir 8 caràcters.");
             return false;
         }
 
