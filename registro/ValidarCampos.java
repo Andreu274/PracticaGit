@@ -2,7 +2,6 @@ package registro;
 
 // Definició de la classe ValidarCampos
 public class ValidarCampos {
-
     // Variables privades d'instància
     private String nombreUsuario;
     private String emailUsuario;
@@ -79,33 +78,36 @@ public class ValidarCampos {
         return true;
     }
 
+    // Funció per validar el camp de email
     public boolean compruebaEmail(String emailUsuario) {
-        if(emailUsuario.isEmpty()) {
-            System.out.println("El email no puede estar vacío.");
+        if(emailUsuario.isEmpty()) { // Verificar si el camp está buit
+            System.out.println("El email no puede estar vacio.");
             return false;
         }
 
+        // Utilizar una expresió regular per verificar si el email es vàlid
         if(!emailUsuario.matches("[\\w]+@(paucasesnovescifp|yahoo|gmail|hotmail)\\.(com|es|cat)")) {
             System.out.println("El email ingresado no es válido.");
             return false;
         }
 
-        return true;
+        return true; // Si el email es vàlid, torna true
     }
 
+    // Funció per validar el camp de código
     public boolean compruebaCodigo(String codigoUsuario) {
-        if(codigoUsuario.isEmpty()) {
-            System.out.println("El código no puede estar vacío.");
+        if(codigoUsuario.isEmpty()) { // Verificar si el camp está buit
+            System.out.println("El código no puede estar vacio.");
             return false;
         }
 
+        // Utilizar una expresión regular per verificar si el código es vàlid
         if(!codigoUsuario.matches("[a-zA-Z0-9!@#$%^&*()_+={}|;':,./<>?]{8}")) {
             System.out.println("El codigo no es válido.");
             return false;
         }
 
-        return true;
+        return true; // Si el codi es vàlid, torna true
     }
-    
 
 }
