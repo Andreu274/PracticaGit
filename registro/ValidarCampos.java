@@ -1,14 +1,22 @@
+/**
+ *Classe per validar els camps d'un formulari de registre.
+ */
 package registro;
-
-// Definició de la classe ValidarCampos
 public class ValidarCampos {
-    // Variables privades d'instància
+
     private String nombreUsuario;
     private String emailUsuario;
     private String passwordUsuario;
     private String codigoUsuario;
 
-    // Constructor que inicialitza les variables privades amb els valors passats com a paràmetres
+    /**
+     * Constructor de la classe ValidarCampos que inicialitza les variables privades amb els valors passats com a paràmetres.
+     * @author Andreu Pons,Marc Sans
+     * @param nombreUsuario Nom de l'usuari.
+     * @param emailUsuario Correu electrònic de l'usuari.
+     * @param passwordUsuario Contrasenya de l'usuari.
+     * @param codigoUsuario Codi de l'usuari.
+     */
     public ValidarCampos(String nombreUsuario, String emailUsuario, String passwordUsuario, String codigoUsuario) {
         this.nombreUsuario = nombreUsuario;
         this.emailUsuario = emailUsuario;
@@ -16,7 +24,11 @@ public class ValidarCampos {
         this.codigoUsuario = codigoUsuario;
     }
 
-    // Mètode públic que valida tots els camps del formulari i retorna true si tots són vàlids
+    /**
+     * Mètode públic que valida tots els camps del formulari i retorna true si tots són vàlids.
+     *
+     * @return True si tots els camps són vàlids, false si no.
+     */
     public boolean validarCampos() {
         // Comprova si el nom d'usuari és vàlid
         boolean compruebaNombre = compruebaNombre(nombreUsuario);
@@ -30,7 +42,12 @@ public class ValidarCampos {
         return compruebaNombre && compruebaEmail && compruebaPassword && compruebaCodigo;
     }
 
-    // Mètode estàtic que comprova si el nom d'usuari és vàlid
+    /**
+     * Mètode estàtic que comprova si el nom d'usuari és vàlid.
+     * @param nombreUsuario Nom de l'usuari.
+     * @return True si el nom d'usuari és vàlid, false si no.
+     * @author Andreu Pons
+     */
     public static boolean compruebaNombre(String nombreUsuario) {
         if(nombreUsuario.isEmpty()) {
             System.out.println("El nom d'usuari no pot estar buit.");
@@ -59,6 +76,18 @@ public class ValidarCampos {
         return true;
     }
 
+
+    /**
+     * Comprova si la contrasenya passada com a paràmetre és vàlida.
+     *
+     * La contrasenya ha de tenir una longitud mínima de 8 caràcters i ha de complir el següent format:
+     * - Una lletra majúscula seguida de lletres minúscules i/o números.
+     * - Un caràcter especial a triar entre @, -, # o _.
+     * - Dos dígits.
+     * @param passwordUsuario la contrasenya a validar.
+     * @return true si la contrasenya és vàlida, false altrament.
+     * @author Andreu Pons
+     */
     // Mètode estàtic que comprova si la contrasenya és vàlida
     public static boolean compruebaPassword(String passwordUsuario) {
         if(passwordUsuario.isEmpty()) {
@@ -78,6 +107,13 @@ public class ValidarCampos {
         return true;
     }
 
+
+    /**
+     * Comprova si l'email ingressat és vàlid.
+     * @param emailUsuario L'email a validar.
+     * @return True si l'email és vàlid, false si no ho és.
+     * @author Marc Sans
+     */
     // Funció per validar el camp de email
     public boolean compruebaEmail(String emailUsuario) {
         if(emailUsuario.isEmpty()) { // Verificar si el camp está buit
@@ -94,6 +130,13 @@ public class ValidarCampos {
         return true; // Si el email es vàlid, torna true
     }
 
+
+    /**
+     * Funció per validar el camp de código
+     * @param codigoUsuario el codi a validar
+     * @return true si el codi és vàlid, false si no ho és
+     * @author Marc Sans
+     */
     // Funció per validar el camp de código
     public boolean compruebaCodigo(String codigoUsuario) {
         if(codigoUsuario.isEmpty()) { // Verificar si el camp está buit
@@ -107,7 +150,7 @@ public class ValidarCampos {
             return false;
         }
 
-        return true; // Si el codi es vàlid, torna true
+        return true;
     }
 
 }
